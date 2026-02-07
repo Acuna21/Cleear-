@@ -1,0 +1,36 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: var(--color-background);
+
+  app-header {
+    flex: 0 0 auto;
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
+
+  .content {
+    flex: 1 0 auto;
+    padding: var(--space-4) var(--space-3);
+    width: 100%;
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    background-color: var(--color-surface);
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+// Media query para pantallas más grandes
+@media (min-width: 768px) {
+  .content {
+    padding: var(--space-6) var(--space-4);
+  }
+}

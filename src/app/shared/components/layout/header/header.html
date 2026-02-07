@@ -1,0 +1,44 @@
+<header class="app-header">
+  <div class="header-container">
+
+    <!-- Brand -->
+    <div class="brand">
+      <span class="logo">UL</span>
+      <span class="title">Reportes</span>
+    </div>
+
+    <!-- Botón menú (mobile) -->
+    <button
+      class="menu-btn"
+      aria-label="Abrir menú"
+      aria-expanded="{{ menuOpen }}"
+      (click)="toggleMenu()">
+      ☰
+    </button>
+
+    <!-- Navegación global -->
+    <nav class="main-nav" [class.open]="menuOpen">
+      <a
+        routerLink="/design-system"
+        routerLinkActive="active"
+        (click)="closeMenu()">
+        Design System
+      </a>
+
+      <a
+        routerLink="/reportes"
+        routerLinkActive="active"
+        (click)="closeMenu()">
+        Reportes
+      </a>
+
+      <a
+        routerLink="/configuracion"
+        routerLinkActive="active"
+        (click)="closeMenu()">
+        Configuración
+      </a>
+    </nav>
+
+  </div>
+</header>

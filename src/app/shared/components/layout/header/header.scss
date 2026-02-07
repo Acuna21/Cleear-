@@ -1,0 +1,89 @@
+.app-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+/* Botón menú */
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Nav mobile */
+.main-nav {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-surface);
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+
+  a {
+    padding: var(--space-3) var(--space-4);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+
+    &.active {
+      background-color: var(--color-primary-soft);
+    }
+  }
+}
+
+.main-nav.open {
+  display: flex;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    gap: var(--space-4);
+    border: 0;
+    width: auto;
+  }
+}
