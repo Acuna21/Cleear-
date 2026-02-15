@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
-import { AppLayout } from './shared/components/layout/app-layout/app-layout';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppLayout,
-    children: [
-      
-    ]
+    loadComponent: () => import('./layout/app-layout/app-layout').then( component => component.AppLayout),
+    loadChildren: () => import('./layout/routes/private.routes').then( routes => routes.privateRoutes )
+  },
+  {
+    path: 'auth',
+    loadComponent: () => import('./auth/auth-methods/auth-methods').then( component => component.AuthMethods )
   }
 ];
