@@ -1,1 +1,22 @@
-<p>auth-form works!</p>
+<div class="form-auth-container">
+  <form [formGroup]="formAuth">
+    <ui-input
+      formControlName="email"
+      label="Correo electronico"
+      type="email"
+    />
+    <ui-input
+      formControlName="password"
+      label="Contrasena"
+      type="password"
+    />
+    <app-button
+      size="lg"
+      icon="fa-solid fa-right-to-bracket"
+      iconPosition="right"
+      (click)="login()"
+    >
+      Acceder
+    </app-button>
+  </form>
+</div>

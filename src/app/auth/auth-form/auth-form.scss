@@ -1,0 +1,7 @@
+.form-auth-container {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+  }
+}

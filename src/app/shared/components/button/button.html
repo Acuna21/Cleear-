@@ -1,0 +1,12 @@
+<button
+  [disabled]="disabled()"
+  [class]="[variant(), size()]"
+>
+  @if (icon() && iconPosition() === 'left') {
+    <i [class]="icon()" [style]="{'color': iconColor()}" ></i>
+  }
+  <ng-content></ng-content>
+  @if (icon() && iconPosition() === 'right') {
+    <i [class]="icon()" [style]="{'color': iconColor()}" ></i>
+  }
+</button>

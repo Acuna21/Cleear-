@@ -15,7 +15,11 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@components/*": ["./src/app/shared/components/*"]
+      "@components/*": ["./src/app/shared/components/*"],
+      "@services/*": ["./src/app/shared/services/*"],
+      "@enums/*": ["./src/app/shared/enums/*"],
+      "@models/*": ["./src/app/shared/models/*"],
+      "@environments/*": ["./src/environments/*"]
     }
   },
   "angularCompilerOptions": {

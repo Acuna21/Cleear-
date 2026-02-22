@@ -6,6 +6,7 @@
   /* 🎨 Superficies */
   --color-background: #F7F7F7;
   --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
 
   /* ✅ Estados */
   --color-success: #2D8A3C;
@@ -16,4 +17,20 @@
 
   /* 📏 Bordes */
   --radius-sm: 8px;
+
+  /* Shadow */
+  --color-shadow: #312d2dc4;
+
+  /* Spacing */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-s: 12px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Screens */
+  --screen-tablet: 768px;
+  --screen-desktop: 1024px;
 }

@@ -1,0 +1,21 @@
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="login-container" >
+  <div class="login-title p-t-m p-b-xl">
+    <i class="fa-solid fa-circle-user"></i>
+    <h2>Iniciar Sesion</h2>
+  </div>
+  <div class="login-content p-m" >
+    <app-auth-form (formValue)="loginWithCredentials($event)" />
+    <p class="divider" >o</p>
+    <app-button
+      variant="secondary"
+      icon="fa-brands fa-microsoft"
+      size="lg"
+      (click)="loginWithAzure()"
+    >
+      Iniciar con Microsoft
+    </app-button>
+  </div>
+</div>

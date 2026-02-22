@@ -1,0 +1,15 @@
+// Base Divider class
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 0 -1em;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  margin: 0 1em;
+  background: var(--color-border);
+}

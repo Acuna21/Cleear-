@@ -1,15 +1,17 @@
 <div
   class="ui-input"
-  [ngClass]="[size, appearance, invalid ? 'invalid' : '']"
+  [class]="[size(), appearance(), invalid() ? 'invalid' : '']"
 >
-  <label *ngIf="label" class="label">{{ label }}</label>
+  @if (label()) {
+    <label class="label">{{ label() }}</label>
+  }
 
   <input
     class="control"
-    [type]="type"
-    [placeholder]="placeholder"
-    [value]="value"
-    [disabled]="disabled"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [value]="value()"
+    [disabled]="disabled()"
     (input)="handleInput($event)"
     (blur)="onTouched()"
   />
