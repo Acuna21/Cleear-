@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { AzureAuthManagement } from './azure-auth-management';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { UserAuth } from '@models/auth-response.model';
 type Role = string;
 
 @Injectable({
@@ -12,7 +13,7 @@ export class AppAuthManagement {
   private readonly azureAuthManagement = inject(AzureAuthManagement);
   private readonly router = inject(Router);
 
-  currentUser = signal<{ id: string; role: Role; name: string } | null>(null);
+  currentUser = signal<UserAuth | null>(null);
 
   async initialiceAppAuth(): Promise<void> {
     try {
@@ -33,8 +34,9 @@ export class AppAuthManagement {
 
   public loadSession(): void {
     const token = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
     const user = localStorage.getItem('user_data');
-    if (token && user) {
+    if (token && refreshToken && user) {
       this.currentUser.set(JSON.parse(user));
     }
   }

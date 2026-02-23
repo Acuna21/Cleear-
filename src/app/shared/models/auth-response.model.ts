@@ -13,11 +13,13 @@ export interface IAuthDTO {
 export interface UserLogin {
   accessToken: string;
   refreshToken: string;
-  user: {
-    id: string;
-    email: string;
-    fullName: string;
-    role: string;
-    image: string;
-  }
+  user: UserAuth
+}
+
+export interface UserAuth {
+  id: string;
+  email: string;
+  fullName: string;
+  role: string;
+  image: string;
 }

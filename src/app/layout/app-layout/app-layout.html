@@ -1,5 +1,8 @@
 <div class="layout">
-  <app-header></app-header>
+  <app-header
+    [userName]="userName()"
+    [userRole]="userRole()"
+  />
 
   <main class="content">
     <router-outlet></router-outlet>
