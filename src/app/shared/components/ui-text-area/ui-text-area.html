@@ -1,0 +1,17 @@
+<div
+  class="ui-text-area"
+  [class]="[size(), appearance(), invalid() ? 'invalid' : '']"
+>
+  @if (label()) {
+    <label class="label">{{ label() }}</label>
+  }
+
+  <textarea
+    class="control"
+    [rows]="rows()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+  >{{ value() }}</textarea>
+</div>

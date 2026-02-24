@@ -1,0 +1,31 @@
+<div class="ui-file-upload" [class.invalid]="invalid()">
+  @if (label()) {
+    <label class="label">{{ label() }}</label>
+  }
+
+  <label class="upload-box">
+    <input
+      type="file"
+      [multiple]="multiple()"
+      [disabled]="disabled()"
+      (change)="handleFileChange($event)"
+      hidden
+    />
+
+    <span class="upload-text">
+        <i class="fa-solid fa-paperclip icon"></i>
+        Seleccionar archivo(s)
+    </span>
+  </label>
+
+  @if (files()?.length) {
+    <ul class="file-list">
+      @for (file of files(); track file.name; let i = $index) {
+        <li>
+          {{ file.name }}
+          <button type="button" (click)="removeFile(i)">✕</button>
+        </li>
+      }
+    </ul>
+  }
+</div>

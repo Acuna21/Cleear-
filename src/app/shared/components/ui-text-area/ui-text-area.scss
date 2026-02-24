@@ -1,0 +1,44 @@
+.ui-text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .control {
+    resize: vertical;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    transition: 0.2s ease;
+    outline: none;
+
+    &:focus {
+      border-color: #6b46c1;
+      box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.1);
+    }
+  }
+
+  &.filled .control {
+    background: #f9fafb;
+  }
+
+  &.invalid .control {
+    border-color: #dc2626;
+  }
+
+  &.sm .control {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  &.lg .control {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+}

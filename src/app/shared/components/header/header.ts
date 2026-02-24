@@ -1,5 +1,9 @@
-import { Component, Input, Output, EventEmitter, input, output, computed } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { log } from 'console';
+
 
 
 @Component({
@@ -10,6 +14,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.scss'],
 })
 export class HeaderComponent {
+  private router = inject(Router);
 
   userName = input.required<string>();
   userRole = input.required<string>();
@@ -27,7 +32,8 @@ export class HeaderComponent {
   });
 
   onAdd(): void {
-    this.addClicked.emit();
+    console.log('Add button clicked');
+    this.router.navigate(['/create-report']);
   }
 
 
