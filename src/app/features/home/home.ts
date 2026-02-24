@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { AlertCards } from '@components/alert-cards/alert-cards';
 import { Button } from '@components/button/button';
+import { ReportList } from '@components/report-list/report-list';
 import { Search } from '@components/search/search';
 import { Severity } from '@enums/severity';
 import { AlertCardProps } from '@models/alert.model';
@@ -9,7 +10,7 @@ type AlertProps = AlertCardProps & { onClick: () => void };
 
 @Component({
   selector: 'app-home',
-  imports: [Search, Button, AlertCards],
+  imports: [Search, Button, AlertCards, ReportList],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

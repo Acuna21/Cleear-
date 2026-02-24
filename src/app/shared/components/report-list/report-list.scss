@@ -1,0 +1,97 @@
+:host {
+  --color-critical: var(--color-primary);
+  --color-medium: var(--color-gold);
+  --color-low: var(--color-success);
+  --bg-critical: #f8d7da;
+  --bg-medium: #fff3cd;
+  --bg-low: #d4edda;
+  // font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.card-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
+/* Encabezados */
+.table-header {
+  display: flex;
+  padding: 0.5rem 1rem;
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.col-reporte { flex: 3; }
+.col-criticidad { flex: 1; text-align: center; }
+.col-progreso { flex: 1; text-align: right; }
+
+/* Filas */
+.report-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f8f9fa;
+  position: relative;
+}
+
+.status-indicator {
+  width: 4px;
+  height: 40px;
+  border-radius: 0 4px 4px 0;
+}
+
+.report-main {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  align-items: center;
+}
+
+.info { flex: 3; }
+.title { margin: 0; font-size: 1rem; color: #212529; }
+.user { margin: 0; font-size: 0.85rem; color: #adb5bd; }
+
+/* Badges */
+.criticidad-container { flex: 1; display: flex; justify-content: center; }
+.badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Progress Bar */
+.progress-container { flex: 1; }
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill { height: 100%; border-radius: 10px; }
+.percentage { font-size: 0.85rem; font-weight: 600; min-width: 30px; }
+.time { display: block; font-size: 0.75rem; color: #adb5bd; margin-top: 4px; }
+
+/* Modificadores de color */
+.badge-critical { background: var(--bg-critical); color: var(--color-critical); }
+.badge-medium { background: var(--bg-medium); color: #856404; }
+.badge-low { background: var(--bg-low); color: var(--color-low); }
+
+.progress-fill.badge-critical { background: var(--color-critical); }
+.progress-fill.badge-medium { background: var(--color-medium); }
+.progress-fill.badge-low { background: var(--color-low); }
+
+.status-indicator.badge-critical { background: var(--color-critical); }
+.status-indicator.badge-medium { background: var(--color-medium); }
+.status-indicator.badge-low { background: var(--color-low); }
