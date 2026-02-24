@@ -7,8 +7,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./layout/app-layout/app-layout').then( component => component.AppLayout),
     loadChildren: () => import('./layout/routes/private.routes').then( routes => routes.privateRoutes ),
-    canActivate: [authGuard],
-    pathMatch: 'full'
+    canActivate: [authGuard]
   },
   {
     path: 'auth',
