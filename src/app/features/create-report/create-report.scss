@@ -15,23 +15,24 @@
         display: flex;
         gap: 10px;
         flex-direction: column;
+
         section{
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: var( --radius-sm);
             background: white;
     
-            .row{
+            .row {
                 display: flex;
                 gap: 10px;
                 flex-direction: column;
-    
+
                 @media (min-width: 768px) {
                     flex-direction: row;
+                        > * { flex: 1;
                 }
             }
+            }
         }
-            
     }
-
 }
