@@ -1,0 +1,346 @@
+.view-tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.tasks-header {
+  margin-bottom: 8px;
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 4px 0 0 0;
+  }
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+
+  .search-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      left: 16px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 12px 12px 44px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: var(--color-surface);
+      font-size: 14px;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        color: var(--text-secondary);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #d31219;
+        box-shadow: 0 0 0 3px rgba(211, 18, 25, 0.1);
+      }
+    }
+  }
+}
+
+/* Filters Section */
+.filters-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+
+  .filter-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      right: 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .select-input {
+      width: 100%;
+      padding: 10px 36px 10px 12px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: var(--color-surface);
+      font-size: 13px;
+      color: var(--text-primary);
+      cursor: pointer;
+      appearance: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: rgba(0, 0, 0, 0.15);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #d31219;
+        box-shadow: 0 0 0 3px rgba(211, 18, 25, 0.1);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      option {
+        background-color: var(--color-surface);
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+/* Tasks List Section */
+.tasks-list-section {
+  margin-bottom: 16px;
+
+  app-task-list {
+    display: block;
+  }
+
+  .loading-message {
+    text-align: center;
+    padding: 32px 16px;
+    background-color: var(--color-surface);
+    border-radius: 10px;
+    color: var(--text-secondary);
+
+    p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--text-secondary);
+        border-top-color: #d31219;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pagination Section */
+.pagination-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-surface);
+  border-radius: 10px;
+  flex-wrap: wrap;
+
+  .items-per-page {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+
+    .items-select {
+      padding: 6px 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      background-color: var(--color-background);
+      font-size: 13px;
+      color: var(--text-primary);
+      cursor: pointer;
+      appearance: none;
+      padding-right: 20px;
+
+      &:focus {
+        outline: none;
+        border-color: #d31219;
+      }
+    }
+  }
+
+  .pagination-info {
+    font-size: 13px;
+    color: var(--text-secondary);
+    flex: 0 1 auto;
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .page-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: var(--color-background);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background-color: #d31219;
+        color: white;
+        border-color: #d31219;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    .page-numbers {
+      display: flex;
+      gap: 4px;
+      margin: 0 8px;
+
+      .page-num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background: var(--color-background);
+        border-radius: 6px;
+        font-size: 13px;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        &.active {
+          background-color: #d31219;
+          color: white;
+          border-color: #d31219;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .view-tasks-container {
+    gap: 16px;
+  }
+
+  .tasks-header {
+    .title {
+      font-size: 24px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+    }
+  }
+
+  .filters-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pagination-section {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .pagination-controls {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tasks-header {
+    .title {
+      font-size: 20px;
+    }
+  }
+
+  .filters-section {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-section {
+    .pagination-controls {
+      .page-btn,
+      .page-num {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+      }
+
+      .page-numbers {
+        margin: 0 4px;
+      }
+    }
+  }
+}

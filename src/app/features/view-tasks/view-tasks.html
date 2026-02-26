@@ -1,1 +1,164 @@
-<p>task-list works!</p>
+<div class="view-tasks-container">
+  <!-- Header -->
+  <div class="tasks-header">
+    <h1 class="title">Todas las Tareas</h1>
+    <p class="subtitle">{{ totalTasks() }} tareas encontradas</p>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Buscar por título, ID o estudiante..."
+        [value]="searchTerm()"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="filters-section">
+    <!-- State Filter -->
+    <div class="filter-dropdown">
+      <select
+        [value]="selectedState()"
+        (change)="selectedState.set($any($event.target).value); onFilterChange()"
+        class="select-input"
+      >
+        <option value="ALL">Todos los estados</option>
+        <option value="NEW">Pendiente</option>
+        <option value="IN_PROGRESS">En Progreso</option>
+        <option value="ASSIGNED">En Espera</option>
+        <option value="RESOLVED">Completado</option>
+        <option value="CANCELLED">Rechazado</option>
+      </select>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <!-- Priority Filter -->
+    <div class="filter-dropdown">
+      <select
+        [value]="selectedPriority()"
+        (change)="selectedPriority.set($any($event.target).value); onFilterChange()"
+        class="select-input"
+      >
+        <option value="ALL">Toda criticidad</option>
+        <option [value]="Priority.CRITICAL">Crítico</option>
+        <option [value]="Priority.HIGH">Alto</option>
+        <option [value]="Priority.MEDIUM">Medio</option>
+        <option [value]="Priority.LOW">Bajo</option>
+      </select>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-dropdown">
+      <select
+        [value]="selectedCategory()"
+        (change)="selectedCategory.set($any($event.target).value); onFilterChange()"
+        class="select-input"
+      >
+        <option value="ALL">Todas las categorías</option>
+        <option value="INFRAESTRUCTURA">Infraestructura</option>
+        <option value="NOTAS">Notas</option>
+        <option value="OTROS">Otros</option>
+      </select>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <!-- Sort Option -->
+    <div class="filter-dropdown">
+      <select
+        [value]="sortBy()"
+        (change)="sortBy.set($any($event.target).value)"
+        class="select-input"
+      >
+        <option value="recent">Más recientes</option>
+        <option value="oldest">Más antiguos</option>
+        <option value="priority-high">Criticidad (alta primero)</option>
+        <option value="priority-low">Criticidad (baja primero)</option>
+        <option value="progress">Progreso (mayor)</option>
+        <option value="title-az">Título (A-Z)</option>
+        <option value="title-za">Título (Z-A)</option>
+      </select>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <!-- Task List -->
+  <div class="tasks-list-section">
+    @if (isLoading()) {
+      <div class="loading-message">
+        <p>Cargando tareas...</p>
+      </div>
+    } @else {
+      <app-task-list [tasks]="currentTasks()" />
+    }
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-section">
+    <div class="items-per-page">
+      <span>Mostrar</span>
+      <select [value]="itemsPerPage()" (change)="onItemsPerPageChange(+$any($event.target).value)" class="items-select">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>por página</span>
+    </div>
+
+    <div class="pagination-info">
+      <span>Mostrando {{ startIndex() }} - {{ endIndex() }} de {{ totalTasks() }}</span>
+    </div>
+
+    <div class="pagination-controls">
+      <button
+        class="page-btn"
+        (click)="onPageChange(1)"
+        [disabled]="currentPage() === 1"
+        title="Primera página"
+      >
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+
+      <button
+        class="page-btn"
+        (click)="onPageChange(currentPage() - 1)"
+        [disabled]="currentPage() === 1"
+        title="Página anterior"
+      >
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+
+      <!-- Page Numbers -->
+      <div class="page-numbers">
+        @for (page of [currentPage()]; track page) {
+          <button class="page-num active">{{ page }}</button>
+        }
+      </div>
+
+      <button
+        class="page-btn"
+        (click)="onPageChange(currentPage() + 1)"
+        [disabled]="currentPage() === totalPages()"
+        title="Página siguiente"
+      >
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+
+      <button
+        class="page-btn"
+        (click)="onPageChange(totalPages())"
+        [disabled]="currentPage() === totalPages()"
+        title="Última página"
+      >
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

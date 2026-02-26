@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Priority } from '@enums/priority';
 import { environment } from '@environments/environment';
 import { PrioritySummary } from '@models/priority-summary.model';
-import { SimpleTaskResponse } from '@models/responses/simple-task-response.model';
+import { TaskResponse } from '@models/responses/simple-task-response.model';
 import { SimpleTask } from '@models/simple-task.model';
 import { getRelativeTime } from '@utils/date-utils';
 import { catchError, map, Observable, of } from 'rxjs';
@@ -18,13 +18,14 @@ export class HomeTasks {
   recentsTasks(): Observable<SimpleTask[]> {
     const { url: urlApi, tasks } = environment.api;
     const url = `${urlApi+tasks}?limit=4&includeTimestamps=true&sort=created_at:desc&select=id,title,priority`
-    return this.http.get<SimpleTaskResponse>(url).pipe(
+    return this.http.get<TaskResponse>(url).pipe(
       map( res => {
         return res.data.map<SimpleTask>( task => ({
           id: task.id,
           title: task.title,
           priority: task.priority,
           progress: 0,
+          date: new Date(task.created_at),
           time: getRelativeTime(task.created_at)
         }))
       }),
