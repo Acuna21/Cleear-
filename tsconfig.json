@@ -19,6 +19,7 @@
       "@services/*": ["./src/app/shared/services/*"],
       "@enums/*": ["./src/app/shared/enums/*"],
       "@models/*": ["./src/app/shared/models/*"],
+      "@utils/*": ["./src/app/shared/utils/*"],
       "@environments/*": ["./src/environments/*"]
     }
   },

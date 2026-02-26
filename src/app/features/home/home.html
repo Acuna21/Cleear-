@@ -1,7 +1,7 @@
 <section>
   <app-search/>
 </section>
-<section>
+<!-- <section>
   <div class="section-header">
     <h4>CONFIGURAR</h4>
   </div>
@@ -14,12 +14,12 @@
     </div>
     <span class="chevron-icon" ><i class="fa-solid fa-angle-right"></i></span>
   </div>
-</section>
+</section> -->
 
 <section>
   <div class="section-header alerts" >
     <h4>ALERTAS</h4>
-    <app-button variant="outline" icon="fa-solid fa-plus">Agregar</app-button>
+    <app-button (click)="onAdd()" variant="outline" icon="fa-solid fa-plus">Agregar</app-button>
   </div>
   <div class="section-body alerts">
     @for (alert of alerts(); track $index) {
@@ -37,23 +37,26 @@
 <section>
   <div class="section-header quick-access" >
     <h4>ACCESO RAPIDO</h4>
-    <span class="config-quick-access">
+    <!-- <span class="config-quick-access">
       <i class="fa-solid fa-gear"></i>
-    </span>
+    </span> -->
   </div>
   <div class="section-body quick-access" >
     @for (tag of tags(); track $index) {
-      <span class="tag" >{{tag}}</span>
+      <span class="tag" >
+        <i [class]="['fa-solid', tag.icon]" ></i>
+        {{tag.label}}
+      </span>
     }
   </div>
 </section>
 
-<section class="recents" >
+<section>
   <div class="section-header" >
     <h4>RECIENTES</h4>
   </div>
-  <div class="section-body" >
-    <app-report-list />
+  <div class="section-body recents" >
+    <app-task-list [tasks]="recentsTasks()"/>
     <app-button variant="outline" >Ver todos los reportes</app-button>
   </div>
 </section>

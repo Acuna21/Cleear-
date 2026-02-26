@@ -1,8 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { Role } from '@enums/role';
 import { AppAuthManagement } from '@services/app-auth-management';
-
-type Role = string;
 
 export const authGuard: CanActivateFn = (route, state) => {
   console.log('in Auth Guard');

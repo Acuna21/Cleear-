@@ -1,0 +1,41 @@
+<div class="card-container">
+  <div class="table-header">
+    <span class="col-reporte">Reporte</span>
+    <span class="col-criticidad">Prioridad</span>
+    <span class="col-progreso">{{showProgress() ? 'Progreso' : 'Tiempo'}}</span>
+  </div>
+
+  <div class="report-list">
+    @for (item of items(); track item.id) {
+      <div class="report-row">
+        <div [class]="['status-indicator', item.class]"></div>
+
+        <div class="report-main">
+          <div class="info">
+            <h4 class="title">{{ item.title }}</h4>
+            <!-- <p class="user">{{ item.usuario }}</p> -->
+          </div>
+
+          <div class="criticidad-container">
+            <span [class]="['badge', item.class]">
+              {{ item.priority }}
+            </span>
+          </div>
+
+          <div class="progress-container">
+            @if (showProgress()) {
+              <div class="progress-wrapper">
+                <div class="progress-bar-bg">
+                  <div [class]="['progress-fill', item.class]"
+                       [style.width.%]="item.progress"></div>
+                </div>
+                <span class="percentage">{{ item.progress }}%</span>
+              </div>
+            }
+            <span class="time">{{ item.time }}</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

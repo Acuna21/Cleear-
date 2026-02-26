@@ -1,3 +1,5 @@
+import { Role } from "@enums/role";
+
 export interface IAuthDTO {
   accessToken: string;
   refreshToken: string;
@@ -5,7 +7,7 @@ export interface IAuthDTO {
     id: string;
     email: string;
     full_name: string;
-    role: string;
+    role: Role;
     image: string;
   }
 }
@@ -20,6 +22,6 @@ export interface UserAuth {
   id: string;
   email: string;
   fullName: string;
-  role: string;
+  role: Role;
   image: string;
 }

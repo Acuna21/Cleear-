@@ -3,10 +3,10 @@
   [class]="[variant(), size()]"
 >
   @if (icon() && iconPosition() === 'left') {
-    <i [class]="icon()" [style]="{'color': iconColor()}" ></i>
+    <i class="icon-left" [class]="icon()" [style]="{'color': iconColor()}" ></i>
   }
   <ng-content></ng-content>
   @if (icon() && iconPosition() === 'right') {
-    <i [class]="icon()" [style]="{'color': iconColor()}" ></i>
+    <i class="icon-right" [class]="icon()" [style]="{'color': iconColor()}" ></i>
   }
 </button>

@@ -3,18 +3,14 @@ button {
   border-radius: var(--radius-sm);
   border: none;
   color: white;
+  cursor: pointer;
 
-  &.primary {
-    background-color: var(--color-primary);
+  .icon-left {
+    margin-right: var(--spacing-xs);
   }
 
-  &.secondary {
-    background-color: var(--color-black);
-  }
-
-  &.outline {
-    background-color: transparent;
-    color: var(--color-primary);
+  .icon-right {
+    margin-left: var(--spacing-xs);
   }
 
   &.sm {
@@ -40,4 +36,19 @@ button {
     padding: 18px 32px;
     font-weight: 600;
   }
+
+  &.primary {
+    background-color: var(--color-primary);
+  }
+
+  &.secondary {
+    background-color: var(--color-black);
+  }
+
+  &.outline {
+    padding: 0;
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+
 }

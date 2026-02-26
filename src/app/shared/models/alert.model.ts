@@ -4,5 +4,5 @@ export interface AlertCardProps {
   title: string;
   description?: string;
   severity: Severity;
-  count: string;
+  count: number;
 }

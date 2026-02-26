@@ -11,7 +11,7 @@ export class AlertCards {
   title = input.required<string>();
   description = input<string>();
   severity = input.required<Severity>();
-  count = input.required<string>();
+  count = input.required<number>();
 
   protected severityIcon = computed(() => {
     return this.severityIcons[this.severity()];

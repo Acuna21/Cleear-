@@ -11,5 +11,8 @@ export const environment = {
     url: '',
     azureLoginUrl: '',
     loginUrl: '',
+    prioritySummary: '',
+    refreshToken: '',
+    tasks: ''
   }
 };
