@@ -14,7 +14,7 @@ export const privateRoutes: Routes = [
   },
   {
     path: 'task-list',
-    loadComponent: () => import('../../features/task-list/task-list').then( component => component.TaskList ),
+    loadComponent: () => import('../../features/view-tasks/view-tasks').then( component => component.ViewTasks ),
     data: { roles: [Role.ADMIN, Role.REPORTER, Role.MAINTENANCE] }
   },
   {
