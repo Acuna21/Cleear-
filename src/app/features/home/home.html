@@ -22,14 +22,27 @@
     <app-button (click)="onAdd()" variant="outline" icon="fa-solid fa-plus">Agregar</app-button>
   </div>
   <div class="section-body alerts">
-    @for (alert of alerts(); track $index) {
-      <app-alert-cards
-        [title]="alert.title"
-        [description]="alert.description"
-        [severity]="alert.severity"
-        [count]="alert.count"
-        (click)="alert.onClick()"
-      />
+    @if (loadingAlerts()) {
+      @for (i of [1,2,3]; track i) {
+        <div class="skeleton-alert-card">
+          <div class="skeleton-icon skeleton-pulse"></div>
+          <div class="skeleton-text-group">
+            <div class="skeleton-line skeleton-line-md skeleton-pulse"></div>
+            <div class="skeleton-line skeleton-line-sm skeleton-pulse"></div>
+          </div>
+          <div class="skeleton-count skeleton-pulse"></div>
+        </div>
+      }
+    } @else {
+      @for (alert of alerts(); track $index) {
+        <app-alert-cards
+          [title]="alert.title"
+          [description]="alert.description"
+          [severity]="alert.severity"
+          [count]="alert.count"
+          (click)="alert.onClick()"
+        />
+      }
     }
   </div>
 </section>
@@ -56,7 +69,22 @@
     <h4>RECIENTES</h4>
   </div>
   <div class="section-body recents" >
-    <app-task-list [tasks]="recentsTasks()"/>
+    @if (loadingRecents()) {
+      @for (i of [1,2,3,4]; track i) {
+        <div class="skeleton-task-item">
+          <div class="skeleton-task-left">
+            <div class="skeleton-task-badge skeleton-pulse"></div>
+            <div class="skeleton-task-info">
+              <div class="skeleton-line skeleton-line-lg skeleton-pulse"></div>
+              <div class="skeleton-line skeleton-line-xs skeleton-pulse"></div>
+            </div>
+          </div>
+          <div class="skeleton-task-chevron skeleton-pulse"></div>
+        </div>
+      }
+    } @else {
+      <app-task-list [tasks]="recentsTasks()"/>
+    }
     <app-button variant="outline" (click)="viewTasks()" >Ver todos los reportes</app-button>
   </div>
 </section>

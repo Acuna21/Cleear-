@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -14,4 +14,7 @@ export class Button {
   variant = input<'primary' | 'secondary' | 'outline'>('primary');
   size = input<'xl' | 'lg' | 'md' | 'sm'>('md');
   disabled = input<boolean>(false);
+  loading = input<boolean>(false);
+
+  protected isDisabled = computed(() => this.disabled() || this.loading());
 }

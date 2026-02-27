@@ -1,4 +1,4 @@
-import { Component, OnInit, output, signal } from '@angular/core';
+import { Component, OnInit, output, input, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Button } from '@components/button/button';
 import { UiInputComponent } from '@components/ui-input/ui-input';
@@ -11,6 +11,7 @@ import { UiInputComponent } from '@components/ui-input/ui-input';
 })
 export class AuthForm implements OnInit {
 
+  loading = input<boolean>(false);
   formValue = output<{email: string, password: string}>();
   protected isValid = signal<boolean>(false);
 
@@ -27,10 +28,10 @@ export class AuthForm implements OnInit {
   }
 
   login():void {
+    if (this.loading()) return;
     const { email, password } = this.formAuth.getRawValue();
     if (!email || !password) return;
     this.formValue.emit({email, password})
   }
-
 
 }

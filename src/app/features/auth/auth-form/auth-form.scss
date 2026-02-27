@@ -1,4 +1,15 @@
 .form-auth-container {
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    &:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;

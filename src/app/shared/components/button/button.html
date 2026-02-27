@@ -1,12 +1,18 @@
 <button
-  [disabled]="disabled()"
+  [disabled]="isDisabled()"
   [class]="[variant(), size()]"
+  [class.is-loading]="loading()"
 >
-  @if (icon() && iconPosition() === 'left') {
-    <i class="icon-left" [class]="icon()" [style]="{'color': iconColor()}" ></i>
-  }
-  <ng-content></ng-content>
-  @if (icon() && iconPosition() === 'right') {
-    <i class="icon-right" [class]="icon()" [style]="{'color': iconColor()}" ></i>
+  @if (loading()) {
+    <span class="btn-spinner"></span>
+    <span class="btn-loading-text"><ng-content></ng-content></span>
+  } @else {
+    @if (icon() && iconPosition() === 'left') {
+      <i class="icon-left" [class]="icon()" [style]="{'color': iconColor()}" ></i>
+    }
+    <ng-content></ng-content>
+    @if (icon() && iconPosition() === 'right') {
+      <i class="icon-right" [class]="icon()" [style]="{'color': iconColor()}" ></i>
+    }
   }
 </button>

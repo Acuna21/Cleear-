@@ -8,6 +8,7 @@ import { UiTextArea } from '@components/ui-text-area/ui-text-area';
 import { CreateTaskDto } from '@models/task-dto.model';
 import { FetchLocations } from '@services/fetch-locations';
 import { TaskInventory } from '@services/task-inventory';
+import { finalize } from 'rxjs';
 
 type Option = { label: string, value: string };
 
@@ -25,6 +26,7 @@ type Option = { label: string, value: string };
 })
 export class CreateReport implements OnInit {
   protected isValid = signal<boolean>(false);
+  protected isSubmitting = signal<boolean>(false);
 
   protected reportForm = new FormGroup({
       description: new FormControl<string>('', [Validators.required, Validators.minLength(10)]),
@@ -62,15 +64,19 @@ export class CreateReport implements OnInit {
   }
 
   submit(): void {
-    if (this.reportForm.invalid) return;
+    if (this.reportForm.invalid || this.isSubmitting()) return;
 
     const { description, space } = this.reportForm.getRawValue();
     if (!description || !space) return;
+
+    this.isSubmitting.set(true);
     const createTask: CreateTaskDto = {
       description,
       locationId: space,
     }
-    this.taskInventory.addTask(createTask).subscribe( task => {
+    this.taskInventory.addTask(createTask).pipe(
+      finalize(() => this.isSubmitting.set(false))
+    ).subscribe( task => {
       this.router.navigateByUrl(`/task/${task.id}`)
     })
   }

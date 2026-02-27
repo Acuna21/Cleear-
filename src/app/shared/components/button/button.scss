@@ -4,6 +4,11 @@ button {
   border: none;
   color: white;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  transition: opacity 0.2s ease;
 
   .icon-left {
     margin-right: var(--spacing-xs);
@@ -51,4 +56,33 @@ button {
     color: var(--color-primary);
   }
 
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.is-loading {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  .btn-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  .btn-loading-text {
+    opacity: 0.8;
+  }
+}
+
+@keyframes btn-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

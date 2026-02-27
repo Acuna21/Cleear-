@@ -4,6 +4,7 @@ import { Button } from '@components/button/button';
 import { TaskList } from '@components/task-list/task-list';
 import { Search } from '@components/search/search';
 import { Severity } from '@enums/severity';
+import { Priority } from '@enums/priority';
 import { AlertCardProps } from '@models/alert.model';
 import { HomeTasks } from '@services/home-tasks';
 import { SimpleTask } from '@models/simple-task.model';
@@ -52,19 +53,19 @@ export class Home implements OnInit{
             description: 'Requieren atencion inmediada',
             severity: Severity.CRITICAL,
             count: summary.CRITICAL,
-            onClick: () => {}
+            onClick: () => this.navigateWithPriority(Priority.CRITICAL)
           },{
             title: 'Importantes',
             description: 'Se deben tener muy en cuenta',
             severity: Severity.WARN,
             count: summary.HIGH + summary.MEDIUM,
-            onClick: () => {}
+            onClick: () => this.navigateWithPriority(Priority.HIGH)
           },{
             title: 'Postergables',
             description: 'Su revision no afecta alguna actividad.',
             severity: Severity.INFO,
             count: summary.LOW,
-            onClick: () => {}
+            onClick: () => this.navigateWithPriority(Priority.LOW)
           }
         ])
       }
@@ -116,6 +117,22 @@ export class Home implements OnInit{
 
   protected viewTasks(){
     this.router.navigate(['/task-list'])
+  }
+
+  protected navigateWithPriority(priority: Priority): void {
+    this.router.navigate(['/task-list'], { queryParams: { priority } });
+  }
+
+  protected navigateWithTag(tag: Tag): void {
+    const params: Record<string, string> = {};
+    if (tag.redirect) {
+      const search = tag.redirect.startsWith('?') ? tag.redirect.substring(1) : tag.redirect;
+      const urlParams = new URLSearchParams(search);
+      urlParams.forEach((value, key) => {
+        if (value) params[key] = value;
+      });
+    }
+    this.router.navigate(['/task-list'], { queryParams: params });
   }
 
 }

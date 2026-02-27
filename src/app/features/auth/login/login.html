@@ -7,12 +7,17 @@
     <h2>Iniciar Sesion</h2>
   </div>
   <div class="login-content p-m" >
-    <app-auth-form (formValue)="loginWithCredentials($event)" />
+    <app-auth-form
+      [loading]="isLoading()"
+      (formValue)="loginWithCredentials($event)"
+    />
     <p class="divider" >o</p>
     <app-button
       variant="secondary"
       icon="fa-brands fa-microsoft"
       size="lg"
+      [loading]="isAzureLoading()"
+      [disabled]="isLoading()"
       (click)="loginWithAzure()"
     >
       Iniciar con Microsoft

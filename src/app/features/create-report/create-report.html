@@ -2,60 +2,62 @@
   <div class="header">
     <h2>Gestiona tu reporte</h2>
     <span>
-      Completa los siguientes campos para registrar el incidente de manera rápida y eficiente.
+      Completa los siguientes campos para registrar el incidente de manera rapida y eficiente.
     </span>
   </div>
 
-  <form [formGroup]="reportForm" (ngSubmit)="submit()">
-    <section class="section">
-      <h4>¿Cuál es el problema?</h4>
+  <fieldset [disabled]="isSubmitting()">
+    <form [formGroup]="reportForm" (ngSubmit)="submit()">
+      <section class="section">
+        <h4>Cual es el problema?</h4>
 
-      <app-ui-text-area
-        formControlName="description"
-        label="Descripción"
-        placeholder="Escribe aquí todos los detalles del incidente..."
-        [rows]="4"
-      />
-    </section>
+        <app-ui-text-area
+          formControlName="description"
+          label="Descripcion"
+          placeholder="Escribe aqui todos los detalles del incidente..."
+          [rows]="4"
+        />
+      </section>
 
-    <section class="section">
-      <h4>Ubicación del incidente</h4>
+      <section class="section">
+        <h4>Ubicacion del incidente</h4>
 
-      <div class="row">
-          <ui-select
-          formControlName="floor"
-          label="Piso"
-          [options]="floorOptions()"
-          size="sm"/>
+        <div class="row">
+            <ui-select
+            formControlName="floor"
+            label="Piso"
+            [options]="floorOptions()"
+            size="sm"/>
 
-          <ui-select
-          formControlName="space"
-          label="Espacio"
-          [options]="spaceOptions()" size="sm"/>
+            <ui-select
+            formControlName="space"
+            label="Espacio"
+            [options]="spaceOptions()" size="sm"/>
+        </div>
+      </section>
+
+      <section class="section">
+        <h4>Adjuntar evidencia</h4>
+
+        <ui-file-upload
+          formControlName="files"
+          label="Fotos o documentos relacionados"
+          [multiple]="true"
+        />
+      </section>
+
+      <div>
+          <app-button
+            type="submit"
+            size="lg"
+            icon="fa-solid fa-paper-plane"
+            iconPosition="right"
+            [loading]="isSubmitting()"
+            [disabled]="reportForm.invalid">
+            Enviar Reporte
+          </app-button>
       </div>
-    </section>
 
-    <section class="section">
-      <h4>Adjuntar evidencia</h4>
-
-      <ui-file-upload
-        formControlName="files"
-        label="Fotos o documentos relacionados"
-        [multiple]="true"
-      />
-    </section>
-
-    <div>
-        <app-button
-          type="submit"
-          size="lg"
-          icon="fa-solid fa-paper-plane"
-          iconPosition="right"
-          [disabled]="reportForm.invalid">
-          Enviar Reporte
-        </app-button>
-    </div>
-
-
-  </form>
+    </form>
+  </fieldset>
 </div>

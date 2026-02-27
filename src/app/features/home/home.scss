@@ -1,3 +1,94 @@
+/* Skeleton Animations */
+@keyframes skeleton-shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.skeleton-pulse {
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+
+  &.skeleton-line-xs { width: 60px; }
+  &.skeleton-line-sm { width: 100px; }
+  &.skeleton-line-md { width: 140px; }
+  &.skeleton-line-lg { width: 200px; }
+}
+
+/* Alert Card Skeleton */
+.skeleton-alert-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  border: 1px solid var(--color-border);
+  border-left-width: 4px;
+  border-left-color: #e2e8f0;
+  border-radius: 12px;
+
+  .skeleton-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skeleton-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .skeleton-count {
+    width: 32px;
+    height: 28px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+}
+
+/* Task Item Skeleton */
+.skeleton-task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: white;
+
+  .skeleton-task-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .skeleton-task-badge {
+    width: 8px;
+    height: 36px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .skeleton-task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skeleton-task-chevron {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+}
+
 section {
   margin-bottom: var(--spacing-l);
 
