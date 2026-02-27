@@ -19,8 +19,18 @@
     </div>
   </div>
 
+  <!-- Mobile Filter Toggle -->
+  <button class="filter-toggle-btn" (click)="showFilters.set(!showFilters())">
+    <i class="fa-solid fa-sliders"></i>
+    <span>Filtros</span>
+    @if (hasActiveFilters()) {
+      <span class="filter-badge">{{ activeFilterCount() }}</span>
+    }
+    <i class="fa-solid" [class.fa-chevron-down]="!showFilters()" [class.fa-chevron-up]="showFilters()"></i>
+  </button>
+
   <!-- Filters Section -->
-  <div class="filters-section">
+  <div class="filters-section" [class.filters-hidden]="!showFilters()">
     <!-- State Filter -->
     <div class="filter-dropdown">
       <select

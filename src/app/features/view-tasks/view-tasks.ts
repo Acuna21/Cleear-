@@ -30,6 +30,18 @@ export class ViewTasks implements OnInit {
   sortBy = signal<SortOption>('recent');
   currentPage = signal(1);
   itemsPerPage = signal(10);
+  showFilters = signal(false);
+
+  // Computed for active filter count
+  protected hasActiveFilters = computed(() => this.activeFilterCount() > 0);
+  protected activeFilterCount = computed(() => {
+    let count = 0;
+    if (this.selectedState() !== 'ALL') count++;
+    if (this.selectedPriority() !== 'ALL') count++;
+    if (this.selectedCategory() !== 'ALL') count++;
+    if (this.sortBy() !== 'recent') count++;
+    return count;
+  });
 
   // Signals para datos y metadata del servidor
   currentTasks = signal<SimpleTask[]>([]);

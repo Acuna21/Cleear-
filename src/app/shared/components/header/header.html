@@ -46,11 +46,36 @@
 
     </nav>
 
-    <!-- CTA -->
-    <button class="add-btn" (click)="onAdd()">
-      <i class="fa-solid fa-plus"></i>
-      <span class="btn-text">Nuevo Reporte</span>
-    </button>
+    <!-- CTA + Settings -->
+    <div class="header-actions">
+      <button class="add-btn" (click)="onAdd()">
+        <i class="fa-solid fa-plus"></i>
+        <span class="btn-text">Nuevo Reporte</span>
+      </button>
+
+      <div class="settings-wrapper">
+        <button class="settings-btn" (click)="toggleSettingsMenu($event)">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+
+        @if (showSettingsMenu()) {
+          <div class="settings-dropdown" (click)="$event.stopPropagation()">
+            <div class="settings-header">
+              <span class="settings-title">Sistema</span>
+            </div>
+            <div class="settings-item version-item">
+              <i class="fa-solid fa-code-branch"></i>
+              <span>Version {{ appVersion }}</span>
+            </div>
+            <div class="settings-divider"></div>
+            <button class="settings-item logout-item" (click)="onLogout()">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>Cerrar Sesion</span>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
 
   </div>
 

@@ -27,4 +27,10 @@ export const privateRoutes: Routes = [
     loadComponent: () => import('../../features/task-detail/task-detail').then( component => component.TaskDetail ),
     data: { roles: [Role.ADMIN, Role.REPORTER, Role.MAINTENANCE] }
   },
+  {
+    path: 'admin',
+    loadComponent: () => import('../../features/admin/admin-layout/admin-layout').then( component => component.AdminLayout ),
+    loadChildren: () => import('../../features/admin/admin.routes').then( routes => routes.adminRoutes ),
+    data: { roles: [Role.ADMIN] }
+  },
 ];

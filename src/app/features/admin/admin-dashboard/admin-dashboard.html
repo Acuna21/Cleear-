@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Panel de Administracion</h1>
+    <p class="dashboard-subtitle">Gestiona la configuracion del sistema</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">{{ stat.label }}</span>
+          <span class="stat-count">{{ stat.count }}</span>
+        </div>
+        <div class="stat-icon" [style.color]="stat.color">
+          <i [class]="stat.icon"></i>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Quick Config -->
+  <div class="quick-config">
+    <div class="quick-config-header">
+      <h2 class="quick-config-title">Configuracion Rapida</h2>
+      <p class="quick-config-subtitle">Accede a las opciones de configuracion mas comunes</p>
+    </div>
+    <div class="quick-config-body">
+      <p class="quick-config-hint">Usa el menu lateral para acceder a todas las opciones de configuracion del sistema.</p>
+    </div>
+  </div>
+</div>

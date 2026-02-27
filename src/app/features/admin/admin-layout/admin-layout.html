@@ -1,0 +1,40 @@
+<div class="admin-layout">
+  <!-- Mobile header bar -->
+  <div class="mobile-header">
+    <button class="hamburger-btn" (click)="toggleMobileMenu()">
+      <i class="fa-solid" [class.fa-bars]="!mobileMenuOpen()" [class.fa-xmark]="mobileMenuOpen()"></i>
+    </button>
+    <span class="mobile-title">Administracion</span>
+  </div>
+
+  <!-- Overlay for mobile -->
+  @if (mobileMenuOpen()) {
+    <div class="sidebar-overlay" (click)="closeMobileMenu()"></div>
+  }
+
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="mobileMenuOpen()">
+    <div class="sidebar-header">
+      <span>Configuracion del Sistema</span>
+    </div>
+    <nav class="sidebar-nav">
+      @for (item of navItems; track item.route) {
+        <a
+          class="sidebar-nav-item"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.route === '/admin' }"
+          (click)="closeMobileMenu()"
+        >
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="admin-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
