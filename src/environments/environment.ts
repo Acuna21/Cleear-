@@ -13,6 +13,7 @@ export const environment = {
     loginUrl: '',
     prioritySummary: '',
     refreshToken: '',
-    tasks: ''
+    tasks: '',
+    locations: '',
   }
 };

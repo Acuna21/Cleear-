@@ -7,15 +7,17 @@ import { PaginatedTasksResponse } from '@models/paginated-tasks-response.model';
 import { TaskDataResponse, TaskResponse } from '@models/responses/simple-task-response.model';
 import { SimpleTask } from '@models/simple-task.model';
 import { Task } from '@models/task';
+import { CreateTaskDto } from '@models/task-dto.model';
 import { TaskQuery } from '@models/task-query';
 import { getRelativeTime } from '@utils/date-utils';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskInventory {
 
+  private readonly baseUrl = environment.api.url + environment.api.tasks;
   private readonly http = inject(HttpClient);
 
   fetchTasks(query?: TaskQuery): Observable<PaginatedTasksResponse> {
@@ -41,6 +43,11 @@ export class TaskInventory {
       }),
       catchError(() => of(null))
     )
+  }
+
+  addTask(createTask: CreateTaskDto):Observable<Task>{
+    return this.http.post<TaskDataResponse>(this.baseUrl, createTask)
+      .pipe( map( res => this.mapToTask(res)) )
   }
 
   private mapToSimpleTask(taskDataResponse: TaskDataResponse ): SimpleTask {
