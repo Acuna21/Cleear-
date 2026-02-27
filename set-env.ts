@@ -18,7 +18,7 @@ export const environment = {
   },
   api: {
     url: '${process.env['API_BASE_URL']}',
-    azureLoginUrl: '/auth/azure',
+    azureLoginUrl: '/auth/azure-login',
     loginUrl: '/auth/login',
     prioritySummary: '/tasks/stats/priority-summary',
     refreshToken: '/auth/refresh',
