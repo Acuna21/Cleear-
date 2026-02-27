@@ -20,7 +20,7 @@ export const environment = {
     url: '${process.env['API_BASE_URL']}',
     azureLoginUrl: '/auth/azure',
     loginUrl: '/auth/login',
-    prioritySummary: '/stats/priority-summary',
+    prioritySummary: '/tasks/stats/priority-summary',
     refreshToken: '/auth/refresh',
     tasks: '/tasks',
     locations: '/locations'
